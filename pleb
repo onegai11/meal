@@ -1,0 +1,160 @@
+# This is to certify that this project is my own work, based on my personal
+# efforts in studying and applying the concepts learned. I have constructed
+# the functions and their respective algorithms and corresponding code by
+# myself. The program was run, tested, and debugged by my own efforts. I
+# further certify that I have not copied in part or whole or otherwise
+# plagiarized the work of other students and/or persons.
+# Julia Hanael S. Santiago, DLSU ID# 12259276
+
+
+#Description: <Describe what this program does briefly>
+#Programmed by: Julia Hanael S. Santiago STEM11-F
+#Last modified: Feb. 25, 2023 
+#Version: V4.4
+#Acknowledgements: educba.com, opengenus.org, w3schools.com
+
+
+from tabulate import tabulate #i hope im allowed to use tabulate
+#main table
+d = [ [1, "Chicken", 90.00],
+    [2, "Pork", 105.00],
+    [3, "Fish", 120.00],
+    [4, "Beef", 135.00]]
+print("MAINS: ")
+print(tabulate(d, headers=["ID", "Type", "Price"], floatfmt=".2f"), '\n')
+#side table
+d = [ [1, "Steamed Rice", 20.00],
+    [2, "Shredded Corn", 35.00],
+    [3, "Mashed Potatoes", 50.00],
+    [4, "Steamed Vegetables", 65.00]]
+print("SIDES: ")
+print(tabulate(d, headers=["ID", "Type", "Price"], floatfmt=".2f"), '\n')
+#drinks table
+d = [ [1, "Mineral Water", 25.00],
+    [2, "Iced Tea", 35.00],
+    [3, "Soda", 45.00],
+    [4, "Fruit Juice", 55.00]]
+print("DRINKS: ")
+print(tabulate(d, headers=["ID", "Type", "Price"], floatfmt=".2f"), '\n')
+
+#start of program
+print("------------------------------------")
+print("NOTE: Please type in all capitals only. Thank you.", '\n')
+print("Please type ORDER to continue ordering or EXIT to cancel your order.")
+start = input()
+if start == "EXIT":
+  print("You have typed in: EXIT")
+  print("...Exiting Program...")
+  quit() #program stops if exit is chosen
+elif start == "ORDER": #program continues if order is chosen
+  print("You have typed in: ORDER")
+  Npeople = input("Please type in how many people are in your group: ")
+  print("There are %s people in your group." % (Npeople), '\n')
+  print("***You can now input your order. Please note that you can only make three(3) orders or less. You can only order one item from the main, sides, and drinks. ***", '\n')
+  print("To input your order, please input the corresponding ID number of the food you want to order. (e.g if you want to order Beef for your main, just type in 4.)***", '\n') #instructions to make it clear
+else: 
+  print("Invalid Input. Please type in ORDER or EXIT only.")
+  print("Please type ORDER to continue ordering or EXIT to cancel your     order.")
+  start = input()
+
+#ORDER 
+x = 1
+while x < 4: #the loop function
+  print("Order %s: " % (x))
+#MAIN
+  main = input("    Main:    ")
+  if main == "1":
+    main = "Chicken"
+    print(main)
+    mainPrice = float(90.00)
+  elif main == "2":
+    main = "Pork"
+    print(main)
+    mainPrice = float(105.00)
+  elif main == "3":
+    main = "Fish"
+    print(main)
+    mainPrice = float(120.00)
+  elif main == "4":
+    main = "Beef"
+    print(main)
+    mainPrice = float(135.00) 
+  else:
+    print("Invalid input. Please input a number from 1 to 4 only.")
+  #SIDE
+  side = input("    Side:    ")
+  if side == "1":
+    side = "Steamed Rice"
+    print(side)
+    sidePrice = float(20.00)
+  elif side == "2":
+    side = "Shredded Corn"
+    print(side)
+    sidePrice = float(35.00)
+  elif side == "3":
+    side = "Mashed Potatoes"
+    print(side)
+    sidePrice = float(50.00)
+  elif side == "4":
+    side = "Steamed Vegetables"
+    print(side)
+    sidePrice = float(65.00)
+  else:
+    print("Invalid input. Please input a number from 1 to 4 only.")
+#DRINKS
+  drink = input("    Drink:    ")
+  if drink == "1":
+    drink = "Mineral Water"
+    print(drink)
+    drinkPrice = float(25.00)
+  elif drink == "2":
+    drink = "Iced Tea"
+    print(drink)
+    drinkPrice = float(35.00)
+  elif drink == "3":
+    drink = "Soda"
+    print(drink)
+    drinkPrice = float(45.00)
+  elif drink == "4":
+    drink = "Fruit Juice"
+    print(drink)
+    drinkPrice = float(55.00)
+  else:
+    print("Invalid input. Please input a number from 1 to 4 only.")
+    #yes or no questions
+  yn1 = input("Is this order correct? Y/N: ")
+  if yn1 == "N":
+    print("")
+    continue
+  elif yn1 == "Y":
+    print("")
+  else:
+    print("Invalid Input. Please type Y for yes or N for no.")
+    yn1 = input("Is this order correct? Y/N: ")
+  yn2 = input("Proceed to next Order? Y/N: ")
+  if yn2 == "N":
+    print("")
+    break
+  elif yn2 == "Y":
+    print("")
+    x = x + 1
+  else:
+    print("Invalid Input.")
+    yn2 = input("Proceed to next Order? Y/N: ")
+  if x == 4:
+    break
+
+#computing pay
+print("Order for party of %s" % (Npeople), '\n')
+sub1 = mainPrice + sidePrice + drinkPrice
+print("Order 1:")
+print("    Main: ", end = ' ')
+print(main.center(20), end = ' ')
+print("%8.2f" % (mainPrice))
+print("    Side: ", end = ' ')
+print(side.center(20), end = ' ')
+print("%8.2f" % (sidePrice))
+print("    Drink: ", end = ' ')
+print(drink.center(20), end = ' ')
+print("%8.2f" % (drinkPrice))
+print("Subtotal:      %.2f" % (sub1))
